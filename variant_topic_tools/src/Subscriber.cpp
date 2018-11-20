@@ -43,7 +43,7 @@ Subscriber::Impl::Impl(ros::NodeHandle& nodeHandle, const MessageType& type,
   type(type),
   callback(callback) {
   subscriber = nodeHandle.subscribe(topic, queueSize,
-    &Subscriber::Impl::eventCallback, this);
+    &Subscriber::Impl::eventCallback, this, ros::TransportHints().tcpNoDelay());
 }
 
 Subscriber::Impl::~Impl() {
